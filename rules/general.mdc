@@ -1,0 +1,17 @@
+---
+description: General coding conventions for comments, naming, and linting.
+alwaysApply: true
+---
+
+### Comments language
+
+- Always write comments in English.
+
+### Variable naming
+
+- Avoid using single-letter variable names.
+- Use descriptive names that clearly express the intent.
+
+### Linting
+
+- After generating or modifying code, always run the linter to ensure the code matches the project's style.

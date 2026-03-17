@@ -1,0 +1,13 @@
+---
+description: Database conventions for Adonis.
+globs: apps/api/database/migrations/**
+---
+
+### Column ordering in new tables
+
+- When creating a new table via migration, always order columns with the primary key (`id`) first, then all other columns in alphabetical order.
+
+### Adding new columns to existing tables
+
+- When adding a new column to an existing table via migration, use `.after('column_name')` to place it in alphabetical order relative to the existing columns.
+- Always check the existing Adonis model to determine the correct alphabetical position.

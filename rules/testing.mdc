@@ -1,0 +1,15 @@
+---
+description: Testing naming and ordering conventions.
+globs: **/*test.*, **/*spec.*
+---
+
+### Test naming conventions
+
+- Test names must follow the pattern: `ClassOrFileName.methodOrFunctionName.descriptionInCamelCase`.
+
+### Test ordering conventions
+
+-  Tests must be sorted: first by method name, then normal tests, then errors, then exceptions, then middlewares.
+- For error cases, use: `ClassOrFileName.methodOrFunctionName.errors.descriptionInCamelCase`.
+- For exception cases, use: `ClassOrFileName.methodOrFunctionName.exceptions.descriptionInCamelCase`.
+- For middleware cases, use: `ClassOrFileName.methodOrFunctionName.middlewares.descriptionInCamelCase`.
