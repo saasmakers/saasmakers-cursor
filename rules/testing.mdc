@@ -13,3 +13,9 @@ globs: **/*test.*, **/*spec.*
 - For error cases, use: `ClassOrFileName.methodOrFunctionName.errors.descriptionInCamelCase`.
 - For exception cases, use: `ClassOrFileName.methodOrFunctionName.exceptions.descriptionInCamelCase`.
 - For middleware cases, use: `ClassOrFileName.methodOrFunctionName.middlewares.descriptionInCamelCase`.
+
+### Test assertions conventions
+
+- Try to group all constants (expected values, payload preparation, database fetching, etc.) together before any assertions.
+- Assertions must be grouped by subject: first `response.status`, then fields sorted alphabetically by property name, then `response.data` shape (`onlyProperties`).
+- Leave exactly one empty line between the request call/fetching and the start of the assertions block.
