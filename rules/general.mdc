@@ -11,7 +11,3 @@ alwaysApply: true
 
 - Avoid using single-letter variable names.
 - Use descriptive names that clearly express the intent.
-
-### Linting
-
-- After generating or modifying code, always run the linter to ensure the code matches the project's style.
