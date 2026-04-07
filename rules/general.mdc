@@ -11,3 +11,8 @@ alwaysApply: true
 
 - Avoid using single-letter variable names.
 - Use descriptive names that clearly express the intent.
+
+### Zod schemas
+
+- PascalCase + `Schema` suffix: `DomainSchema`, `UserColorModeSchema`
+- Types via `z.infer<typeof XSchema>`, never manual duplicates
