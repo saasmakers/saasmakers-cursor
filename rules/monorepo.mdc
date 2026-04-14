@@ -1,0 +1,15 @@
+---
+description: pnpm workspace, Turbo, and commit scopes.
+globs: "**/*"
+---
+
+### Tooling
+
+- Use `pnpm` at repo root; run tasks with `turbo run <task>` (not npm/yarn).
+- Workspace layout: [pnpm-workspace.yaml](pnpm-workspace.yaml) — `apps/*`, `packages/*`, `packages/helpers/*`.
+- Package scope: `@companies/*` imports over deep relative paths when a package exists.
+- Target one package: `pnpm --filter @companies/<name> <script>`.
+
+### Commits
+
+- Allowed scopes: `commitlint.scope-enum` in [package.json](package.json) (root).

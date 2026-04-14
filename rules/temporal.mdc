@@ -1,0 +1,13 @@
+---
+description: Temporal workers, workflows bundle, and global types.
+globs: apps/temporal/**
+---
+
+### Workers and bundles
+
+- Base workers: `analyzer`, `dispatcher`, `fetcher`. Source `workflows/<base>.ts` → bundle `dist/workflows/<base>.js` (see [build.workflows.ts](apps/temporal/build.workflows.ts)).
+- New child workflows: align with `WorkflowType` and existing `workflows/*.ts` / activity modules.
+
+### Types
+
+- New activity groups or contract changes: update [types/global.d.ts](apps/temporal/types/global.d.ts) (`*Activities`, `TaskQueue`, etc.) so `proxyActivities` and tests stay typed.

@@ -1,0 +1,8 @@
+---
+description: Adonis API request validation (Vine).
+globs: apps/api/**
+---
+
+### Validators
+
+- HTTP request validation in `app/validators/**`: use **Vine** (`@vinejs/vine`). Use **Zod** only where the rest of the repo already does (e.g. shared packages); not for new Adonis validators.

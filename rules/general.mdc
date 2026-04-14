@@ -12,6 +12,10 @@ alwaysApply: true
 - Avoid using single-letter variable names.
 - Use descriptive names that clearly express the intent.
 
+### Modules
+
+- Prefer ESM `import`/`export` (root `"type": "module"` in [package.json](package.json)).
+
 ### Zod schemas
 
 - PascalCase + `Schema` suffix: `DomainSchema`, `UserColorModeSchema`
