@@ -7,9 +7,13 @@ globs: **/*test.*, **/*spec.*
 
 - Test names must follow the pattern: `ClassOrFileName.methodOrFunctionName.descriptionInCamelCase`.
 
+### Vitest module tests (e.g. activities, helpers)
+
+- One top-level `describe` per file, named after the implementation basename (e.g. `api` in `api.test.ts`). No nested `describe` per export;
+
 ### Test ordering conventions
 
--  Tests must be sorted: first by method name, then normal tests, then errors, then exceptions, then middlewares.
+- Tests must be sorted: first by method name, then normal tests, then errors, then exceptions, then middlewares.
 - For error cases, use: `ClassOrFileName.methodOrFunctionName.errors.descriptionInCamelCase`.
 - For exception cases, use: `ClassOrFileName.methodOrFunctionName.exceptions.descriptionInCamelCase`.
 - For middleware cases, use: `ClassOrFileName.methodOrFunctionName.middlewares.descriptionInCamelCase`.
