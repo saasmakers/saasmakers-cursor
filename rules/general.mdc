@@ -1,5 +1,5 @@
 ---
-description: General coding conventions for comments, naming, and linting.
+description: General conventions, monorepo tooling, comments, naming, Zod.
 alwaysApply: true
 ---
 
@@ -15,6 +15,17 @@ alwaysApply: true
 ### Modules
 
 - Prefer ESM `import`/`export` (root `"type": "module"` in [package.json](package.json)).
+
+### Tooling
+
+- Use `pnpm` at repo root; run tasks with `turbo run <task>` (not npm/yarn).
+- Workspace layout: [pnpm-workspace.yaml](pnpm-workspace.yaml) — `apps/*`, `packages/*`, `packages/helpers/*`.
+- Package scope: `@companies/*` imports over deep relative paths when a package exists.
+- Target one package: `pnpm --filter @companies/<name> <script>`.
+
+### Commits
+
+- Allowed scopes: `commitlint.scope-enum` in [package.json](package.json) (root).
 
 ### Zod schemas
 
