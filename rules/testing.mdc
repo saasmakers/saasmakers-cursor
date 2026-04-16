@@ -10,6 +10,8 @@ globs: **/*test.*, **/*spec.*
 ### Vitest module tests (e.g. activities, helpers)
 
 - One top-level `describe` per file, named after the implementation basename (e.g. `api` in `api.test.ts`). No nested `describe` per export;
+- In **`apps/temporal`**, prefer helpers from [utils/testing.ts](apps/temporal/utils/testing.ts) (`mocks.fn`, `mocks.resolved`, `createTestEnv`, `mockApi`) over raw `vi.fn()`.
+- Exception: inside `vi.hoisted`, use `vi.fn()` — hoisting runs before imports are initialized.
 
 ### Test ordering conventions
 

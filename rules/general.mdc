@@ -3,18 +3,17 @@ description: General conventions, monorepo tooling, comments, naming, Zod.
 alwaysApply: true
 ---
 
-### Comments language
+### Good practices
 
 - Always write comments in English.
-
-### Variable naming
-
 - Avoid using single-letter variable names.
 - Use descriptive names that clearly express the intent.
+- Use `undefined` internally. Use `null` only when reflecting external sources (DB, JSON, API schemas).
 
-### Modules
+### Modules & Types
 
 - Prefer ESM `import`/`export` (root `"type": "module"` in [package.json](package.json)).
+- Declare shared vendor types in `types/global.d.ts` as `type X = import('…').X`. Reference globally, don't re-import.
 
 ### Tooling
 
