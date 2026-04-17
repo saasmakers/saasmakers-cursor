@@ -10,4 +10,5 @@ globs: apps/temporal/**
 
 ### Types
 
+- Use `ActivityContract` (types/activities.d.ts) and `WorkflowContract` (types/workflows.d.ts) for activity/workflow request+response shapes. Never use ad hoc object types.
 - New activity groups or contract changes: update [types/global.d.ts](apps/temporal/types/global.d.ts) (`*Activities`, `TaskQueue`, etc.) so `proxyActivities` and tests stay typed.

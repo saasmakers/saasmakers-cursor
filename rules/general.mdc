@@ -6,6 +6,7 @@ alwaysApply: true
 ### Good practices
 
 - Always write comments in English.
+- No block comments above functions that restate the name or describe obvious behavior. Comment only non-obvious invariants, edge cases, or intent.
 - Avoid using single-letter variable names.
 - Use descriptive names that clearly express the intent.
 - Use `undefined` internally. Use `null` only when reflecting external sources (DB, JSON, API schemas).

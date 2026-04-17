@@ -3,25 +3,24 @@ description: Testing naming and ordering conventions.
 globs: **/*test.*, **/*spec.*
 ---
 
-### Test naming conventions
+### Naming
 
-- Test names must follow the pattern: `ClassOrFileName.methodOrFunctionName.descriptionInCamelCase`.
+- Pattern: `ClassOrFileName.methodOrFunctionName.descriptionInCamelCase`
+- Unhappy paths (rejects, throws, 4xx/5xx, `ApplicationFailure`): `.errors.` segment — name after the error code or type in camelCase, e.g. `method.errors.modelInstanceNotFound`, `method.errors.s3FetchError`
+- Exception cases: `.exceptions.` segment. Middleware cases: `.middlewares.` segment.
 
-### Vitest module tests (e.g. activities, helpers)
+### Structure
 
-- One top-level `describe` per file, named after the implementation basename (e.g. `api` in `api.test.ts`). No nested `describe` per export;
-- In **`apps/temporal`**, prefer helpers from [utils/testing.ts](apps/temporal/utils/testing.ts) (`mocks.fn`, `mocks.resolved`, `createTestEnv`, `mockApi`) over raw `vi.fn()`.
-- Exception: inside `vi.hoisted`, use `vi.fn()` — hoisting runs before imports are initialized.
+- One top-level `describe` per file, named after the implementation basename. No nested `describe` per export.
+- In `apps/temporal`, prefer helpers from `utils/testing.ts` (`mocks.fn`, `mocks.resolved`, `createTestEnv`, `mockApi`) over raw `vi.fn()`. Exception: inside `vi.hoisted`, use `vi.fn()`.
 
-### Test ordering conventions
+### Ordering
 
-- Tests must be sorted: first by method name, then normal tests, then errors, then exceptions, then middlewares.
-- For error cases, use: `ClassOrFileName.methodOrFunctionName.errors.descriptionInCamelCase`.
-- For exception cases, use: `ClassOrFileName.methodOrFunctionName.exceptions.descriptionInCamelCase`.
-- For middleware cases, use: `ClassOrFileName.methodOrFunctionName.middlewares.descriptionInCamelCase`.
+- Per method: success tests → `.errors.` (alphabetical) → `.exceptions.` → `.middlewares.`
+- Do not use `.errors.` for success cases that assert on an error field in a 200 response.
 
-### Test assertions conventions
+### Assertions
 
-- Try to group all constants (expected values, payload preparation, database fetching, etc.) together before any assertions.
-- Assertions must be grouped by subject: first `response.status`, then fields sorted alphabetically by property name, then `response.data` shape (`onlyProperties`).
-- Leave exactly one empty line between the request call/fetching and the start of the assertions block.
+- Group all constants and setup before assertions.
+- Assert in order: `response.status` → fields alphabetically → `response.data` shape.
+- One empty line between the request/fetch call and the assertions block.
