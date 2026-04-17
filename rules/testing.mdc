@@ -9,6 +9,10 @@ globs: **/*test.*, **/*spec.*
 - Unhappy paths (rejects, throws, 4xx/5xx, `ApplicationFailure`): `.errors.` segment — name after the error code or type in camelCase, e.g. `method.errors.modelInstanceNotFound`, `method.errors.s3FetchError`
 - Exception cases: `.exceptions.` segment. Middleware cases: `.middlewares.` segment.
 
+### Vitest (repo root)
+
+- Vitest globals: `clearMocks`, `mockReset`, `restoreMocks` are all `true`. Never add manual mock cleanup in `beforeEach`/`afterEach`.
+
 ### Structure
 
 - One top-level `describe` per file, named after the implementation basename. No nested `describe` per export.
