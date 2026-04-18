@@ -10,6 +10,11 @@ alwaysApply: true
 - Avoid using single-letter variable names.
 - Use descriptive names that clearly express the intent.
 - Use `undefined` internally. Use `null` only when reflecting external sources (DB, JSON, API schemas).
+- Prefer `field?: T` over `field: T | null | undefined`. Use `| null` only to mirror external schemas.
+- At boundaries, normalize external `null` with `value ?? undefined`.
+- Use `camelCase` for all variables, including constants and exported arrays/objects (write `parkings`, not `PARKINGS`). No `SCREAMING_SNAKE_CASE`.
+- Exceptions: Zod schemas (PascalCase + `Schema`), types/interfaces (PascalCase).
+- Name model instances after the entity (`apexDomain`), not ORM-flavored (`apexDomainRow`).
 
 ### Modules & Types
 
