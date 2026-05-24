@@ -30,7 +30,7 @@ alwaysApply: true
 
 ### Commits
 
-- Allowed scopes: `commitlint.scope-enum` in [package.json](package.json) (root).
+- Allowed scopes: `scope-enum` rule in `@saasmakers/config` (`commitlint.js` export).
 
 ### Zod schemas
 
