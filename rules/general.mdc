@@ -27,6 +27,7 @@ alwaysApply: true
 - Workspace layout: [pnpm-workspace.yaml](pnpm-workspace.yaml) — `apps/*`, `packages/*`, `packages/helpers/*`.
 - Package scope: `@companies/*` imports over deep relative paths when a package exists.
 - Target one package: `pnpm --filter @companies/<name> <script>`.
+- Agent shells may use an older Node than the devcontainer; if `node -v` ≠ root `engines.node`, prepend `export PATH="/usr/local/share/nvm/versions/node/v24.14.1/bin:$PATH"` before `pnpm lint`, `pnpm typecheck`, or `pnpm test`.
 
 ### Commits
 
