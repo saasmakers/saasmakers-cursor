@@ -25,13 +25,21 @@ alwaysApply: true
 
 - Use `pnpm` at repo root; run tasks with `turbo run <task>` (not npm/yarn).
 - Workspace layout: [pnpm-workspace.yaml](pnpm-workspace.yaml) — `apps/*`, `packages/*`, `packages/helpers/*`.
-- Package scope: `@companies/*` imports over deep relative paths when a package exists.
-- Target one package: `pnpm --filter @companies/<name> <script>`.
+- Package scope: `@saasmakers/*` imports over deep relative paths when a package exists.
+- Target one package: `pnpm --filter @saasmakers/<name> <script>`.
 - Agent shells may use an older Node than the devcontainer; if `node -v` ≠ root `engines.node`, prepend `export PATH="/usr/local/share/nvm/versions/node/v24.14.1/bin:$PATH"` before `pnpm lint`, `pnpm typecheck`, or `pnpm test`.
 
 ### Commits
 
 - Allowed scopes: `scope-enum` rule in `@saasmakers/config` (`commitlint.js` export).
+
+### Publishing `@saasmakers/*`
+
+- Only if the user asks. One changeset per release (batch related changes). Never `npm publish` from `packages/*` — use changesets from `saasmakers-turborepo` root; otherwise `catalog:` stays in the published tarball.
+- Default bump in `.changeset/*.md`: `patch` (e.g. `"@saasmakers/ui": patch`). Use `minor` or `major` only when the user explicitly asks.
+- Flow: `.changeset/*.md` → `pnpm exec changeset version` → `CI=true pnpm exec changeset publish`.
+- Before bumping a consumer catalog: verify the release is installable — `curl -sfL "$(npm view @saasmakers/<pkg>@<version> dist.tarball)" -o /dev/null` must exit 0 (`npm view … version` alone can list phantom releases). Retry 404s ~1-2 min; if the version stays listed without a tarball, republish via changesets. `npm view … dependencies` must not contain `catalog:`.
+- Then update consumer `pnpm-workspace.yaml` catalog and `pnpm install`. On failure, diagnose and publish again via changesets — never manual `npm publish` or blind version bumps.
 
 ### Zod schemas
 
