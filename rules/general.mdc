@@ -31,11 +31,12 @@ alwaysApply: true
 
 ### Commits
 
+- **Never commit or push** unless the user explicitly asks.
 - Allowed scopes: `scope-enum` rule in `@saasmakers/config` (`commitlint.js` export).
 
 ### Publishing `@saasmakers/*`
 
-- Only if the user asks. One changeset per release (batch related changes). Never `npm publish` from `packages/*` — use changesets from `saasmakers-turborepo` root; otherwise `catalog:` stays in the published tarball.
+- **Never publish** unless the user explicitly asks. See `git-safety.mdc`. One changeset per release (batch related changes). Never `npm publish` from `packages/*` — use changesets from `saasmakers-turborepo` root; otherwise `catalog:` stays in the published tarball.
 - Default bump in `.changeset/*.md`: `patch` (e.g. `"@saasmakers/ui": patch`). Use `minor` or `major` only when the user explicitly asks.
 - Flow: `.changeset/*.md` → `pnpm exec changeset version` → `CI=true pnpm exec changeset publish`.
 - Before bumping a consumer catalog: verify the release is installable — `curl -sfL "$(npm view @saasmakers/<pkg>@<version> dist.tarball)" -o /dev/null` must exit 0 (`npm view … version` alone can list phantom releases). Retry 404s ~1-2 min; if the version stays listed without a tarball, republish via changesets. `npm view … dependencies` must not contain `catalog:`.
