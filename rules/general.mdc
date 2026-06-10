@@ -28,6 +28,7 @@ alwaysApply: true
 - Package scope: `@saasmakers/*` imports over deep relative paths when a package exists.
 - Target one package: `pnpm --filter @saasmakers/<name> <script>`.
 - Agent shells may use an older Node than the devcontainer; if `node -v` ≠ root `engines.node`, prepend `export PATH="/usr/local/share/nvm/versions/node/v24.14.1/bin:$PATH"` before `pnpm lint`, `pnpm typecheck`, or `pnpm test`.
+- **Cross-repo ops: sequential only.** Run `pnpm install`, `git push`, etc. one turborepo at a time — never in parallel (port conflicts, `ENOMEM`, flaky lockfiles).
 
 ### Commits
 
